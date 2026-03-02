@@ -660,10 +660,11 @@
                 if (footerViewer && footerViewer.shadowRoot) {
                     const logo = footerViewer.shadowRoot.querySelector('#logo');
                     if (logo) {
-                        logo.remove();
+                        logo.style.display = 'none';
+                        logo.style.opacity = '0';
                     }
                 }
-            }, 500);
+            }, 50);
         </script>
     </div>
 

@@ -1541,6 +1541,34 @@ spline-viewer {
     font-size: 0.85rem;
 }
 
+/* Footer Spline Viewer */
+.footer-spline-container {
+    width: 100%;
+    height: 40vh;
+    min-height: 300px;
+    position: relative;
+    margin-top: -30px;
+    margin-bottom: 20px;
+    z-index: 5;
+    pointer-events: none;
+    /* Only allow interacting directly with spline */
+}
+
+.footer-spline-container spline-viewer {
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .footer-spline-container {
+        height: 250px;
+        min-height: 250px;
+        margin-top: -10px;
+        margin-bottom: 10px;
+    }
+}
+
 /* ============================================
    FOOTER
    ============================================ */

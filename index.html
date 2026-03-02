@@ -651,6 +651,22 @@
         </div>
     </section>
 
+    <!-- Footer Spline Scene -->
+    <div class="footer-spline-container">
+        <spline-viewer url="https://prod.spline.design/egcIG0Zp6CThLr23/scene.splinecode"></spline-viewer>
+        <script>
+            setInterval(() => {
+                const footerViewer = document.querySelector('.footer-spline-container spline-viewer');
+                if (footerViewer && footerViewer.shadowRoot) {
+                    const logo = footerViewer.shadowRoot.querySelector('#logo');
+                    if (logo) {
+                        logo.remove();
+                    }
+                }
+            }, 500);
+        </script>
+    </div>
+
     <!-- Footer -->
     <footer class="footer">
         <div class="container">

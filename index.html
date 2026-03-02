@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harsh Dalal – Software Developer | Portfolio</title>
+    <meta name="description"
+        content="Harsh Dalal – Software Developer specializing in modern web technologies. Currently at HCLTech, previously at MakeMyTrip. Explore projects, skills, and experience.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Particle Canvas -->
+    <canvas id="particle-canvas"></canvas>
+
+    <!-- Cursor Glow -->
+    <div id="cursor-glow"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#hero" class="nav-logo">
+                <span class="logo-bracket">&lt;</span>Harsh<span class="logo-bracket">/&gt;</span>
+            </a>
+            <div class="nav-links" id="nav-links">
+                <a href="#about" class="nav-link">About</a>
+                <a href="#skills" class="nav-link">Skills</a>
+                <a href="#experience" class="nav-link">Experience</a>
+                <a href="#projects" class="nav-link">Projects</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Toggle navigation">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="hero" class="section hero-section">
+        <div class="hero-bg-grid"></div>
+        <div class="hero-content">
+            <div class="hero-text">
+                <div class="hero-badge animate-in">
+                    <span class="badge-dot"></span>
+                    Available for collaboration
+                </div>
+                <h1 class="hero-title animate-in">
+                    <span class="hero-greeting">Hello, I'm</span>
+                    <span class="hero-name">Harsh Dalal</span>
+                    <span class="hero-role">Software Developer</span>
+                </h1>
+                <p class="hero-description animate-in">
+                    Building modern, scalable digital solutions that push boundaries.
+                    Crafting elegant code and immersive user experiences with cutting-edge technologies.
+                </p>
+                <div class="hero-companies animate-in">
+                    <div class="company-badge" data-company="hcltech">
+                        <div class="company-badge-glow"></div>
+                        <div class="company-badge-content">
+                            <span class="company-status">Currently at</span>
+                            <span class="company-name">HCLTech</span>
+                        </div>
+                    </div>
+                    <div class="company-badge" data-company="makemytrip">
+                        <div class="company-badge-glow"></div>
+                        <div class="company-badge-content">
+                            <span class="company-status">Previously at</span>
+                            <span class="company-name">MakeMyTrip</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-cta animate-in">
+                    <a href="#projects" class="btn btn-primary">
+                        <span>View Projects</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                    <a href="#contact" class="btn btn-outline">
+                        <span>Get in Touch</span>
+                    </a>
+                </div>
+            </div>
+            <div class="hero-3d-scene">
+                <div class="spline-container animate-in">
+                    <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.61/build/spline-viewer.js"
+                        async></script>
+                    <spline-viewer url="https://prod.spline.design/3Vl28P91MXcvHtOK/scene.splinecode"><img
+                            src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAANCAYAAADISGwcAAAG1ElEQVR4AQCBAH7/AAgMDi8IDA4sCAwOJggMDh0IDA4UCAwOCggMDgEIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4ACAwOAwgMDgkIDA4PCAwOEwgMDhUIDA4WCAwOFggMDhUIDA4TCAwOEQgMDg8IDA4NCAwODAgMDgsIDA4LCAwOCwgMDgwIDA4MAIEAfv8ACAwOMAgMDi0IDA4nCAwOHwgMDhYIDA4NCAwOBAgMDgAIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgUIDA4LCAwOEggMDhcIDA4bCAwOHQgMDh4IDA4eCAwOHAgMDhoIDA4YCAwOFQgMDhMIDA4SCAwOEQgMDhEIDA4RCAwOEQgMDhEAgQB+/wAIDA4rCAwOKAgMDiMIDA4bCAwOEwgMDgsIDA4ECAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4FCAwOCwgMDhIIDA4YCAwOHQgMDiEIDA4jCAwOIwgMDiIIDA4gCAwOHQgMDhoIDA4XCAwOFQgMDhMIDA4SCAwOEggMDhEIDA4RCAwOEQCBAH7/AAgMDhoIDA4YCAwOEwgMDg0IDA4GCAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgEIDA4ICAwODggMDhUIDA4ZCAwOHAgMDh4IDA4dCAwOGwgMDhgIDA4UCAwOEAgMDgwIDA4JCAwOBggMDgUIDA4ECAwOAwgMDgMIDA4DAIEAfv8ACAwOCAgMDgYIDA4CCAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4HCAwODAgMDhAIDA4SCAwOEggMDhAIDA4MCAwOCAgMDgIIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgAAgQB+/wAIDA4JCAwOCAgMDgQIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4CCAwOCAgMDg4IDA4SCAwOFAgMDhUIDA4TCAwODwgMDgoIDA4ECAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4ACAwOAACBAH7/AAgMDi8IDA4tCAwOKggMDiYIDA4iCAwOHggMDhwIDA4aCAwOGwgMDh0IDA4hCAwOJggMDisIDA4wCAwONQgMDjcIDA44CAwONwgMDjQIDA4uCAwOKAgMDiAIDA4YCAwOEQgMDgoIDA4FCAwOAAgMDgAIDA4ACAwOAAgMDgAIDA4AAIEAfv8ACAwOdggMDnUIDA5yCAwObwgMDmsIDA5oCAwOZQgMDmQIDA5lCAwOZwgMDmsIDA5vCAwOdAgMDngIDA57CAwOfQgMDnwIDA56CAwOdQgMDm8IDA5nCAwOXggMDlYIDA5OCAwORwgMDkEIDA49CAwOOggMDjgIDA43CAwONggMDjYAgQB+/wAIDA7GCAwOxQgMDsMIDA6/CAwOvAgMDrkIDA63CAwOtggMDrcIDA65CAwOvQgMDsEIDA7FCAwOyAgMDssIDA7LCAwOyggMDscIDA7BCAwOuwgMDrIIDA6qCAwOoggMDpoIDA6TCAwOjggMDosIDA6ICAwOhwgMDoYIDA6GCAwOhgCBAH7/AAgMDv4IDA79CAwO+wgMDvgIDA71CAwO8ggMDvEIDA7wCAwO8QgMDvMIDA73CAwO+wgMDv8IDA7/CAwO/wgMDv8IDA7/CAwO/wgMDvsIDA70CAwO7AgMDuUIDA7dCAwO1ggMDtEIDA7NCAwOyggMDskIDA7ICAwOyQgMDskIDA7JAIEAfv8ACAwO/wgMDv8IDA7/CAwO/wgMDv8IDA7/CAwO/wgMDv8IDA7/CAwO/wgMDv8IDA7/CAwO/wgMDv8IDA7/CAwO/wgMDv8IDA7/CAwO/wgMDv8IDA7/CAwO+wgMDvUIDA7wCAwO7AgMDukIDA7oCAwO6AgMDugIDA7pCAwO6ggMDusAgQB+/wAIDA78CAwO+wgMDvkIDA73CAwO9AgMDvIIDA7xCAwO8QgMDvMIDA72CAwO+QgMDv4IDA7/CAwO/wgMDv8IDA7/CAwO/wgMDv8IDA7/CAwO/wgMDvoIDA70CAwO7wgMDusIDA7oCAwO5wgMDucIDA7oCAwO6ggMDusIDA7tCAwO7gGBAH7/AAgMDugIDA7nCAwO5QgMDuIIDA7gCAwO3ggMDt0IDA7eCAwO3wgMDuMIDA7nCAwO6wgMDvAIDA70CAwO9wgMDvkIDA75CAwO9wgMDvQIDA7wCAwO6wgMDuYIDA7iCAwO3wgMDt0IDA7cCAwO3QgMDt8IDA7hCAwO4wgMDuUIDA7mkTneA1iSir8AAAAASUVORK5CYII="
+                            alt="Spline preview" style="width: 100%; height: 100%;" /></spline-viewer>
+                    <script>
+                        const removeSplineLogo = setInterval(() => {
+                            const viewers = document.querySelectorAll('spline-viewer');
+                            viewers.forEach(viewer => {
+                                if (viewer && viewer.shadowRoot) {
+                                    const logo = viewer.shadowRoot.querySelector('#logo');
+                                    if (logo) {
+                                        logo.remove();
+                                    }
+                                }
+                            });
+                        }, 100);
+                        // Clean up interval after 10s
+                        setTimeout(() => clearInterval(removeSplineLogo), 10000);
+                    </script>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-dot"></div>
+            </div>
+            <span>Scroll to explore</span>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;about&gt;</span>
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">A glimpse into who I am</p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card glass-card tilt-card">
+                    <div class="about-card-inner">
+                        <div class="about-avatar">
+                            <div class="avatar-ring"></div>
+                            <div class="avatar-placeholder">
+                                <img src="assets/profile.jpg" alt="Harsh Dalal" class="about-photo">
+                            </div>
+                            <div class="avatar-glow"></div>
+                        </div>
+                        <h3 class="about-name">Harsh Dalal</h3>
+                        <p class="about-title">Software Developer</p>
+                        <p class="about-bio">
+                            A passionate software developer with a keen eye for detail and a love for creating
+                            exceptional digital experiences. Currently driving innovation at HCLTech, with prior
+                            experience at MakeMyTrip building scalable travel solutions. I thrive on turning
+                            complex problems into elegant, user-friendly solutions.
+                        </p>
+                    </div>
+                </div>
+                <div class="about-stats">
+                    <div class="stat-card glass-card" data-count="2" data-suffix="+">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Years Experience</div>
+                        <div class="stat-icon"><i class="fas fa-calendar-alt"></i></div>
+                    </div>
+                    <div class="stat-card glass-card" data-count="15" data-suffix="+">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Projects Completed</div>
+                        <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
+                    </div>
+                    <div class="stat-card glass-card" data-count="6" data-suffix="+">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Technologies</div>
+                        <div class="stat-icon"><i class="fas fa-layer-group"></i></div>
+                    </div>
+                    <div class="stat-card glass-card" data-count="2" data-suffix="">
+                        <div class="stat-number">0</div>
+                        <div class="stat-label">Companies</div>
+                        <div class="stat-icon"><i class="fas fa-building"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;skills&gt;</span>
+                <h2 class="section-title">Tech Arsenal</h2>
+                <p class="section-subtitle">Technologies I work with daily</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-card glass-card tilt-card" data-skill="javascript">
+                    <div class="skill-icon-wrap">
+                        <div class="skill-glow" style="--skill-color: #f7df1e"></div>
+                        <i class="fab fa-js-square" style="color: #f7df1e"></i>
+                    </div>
+                    <h3>JavaScript</h3>
+                    <p>ES6+, TypeScript, DOM manipulation, async patterns</p>
+                    <div class="skill-level">
+                        <div class="skill-bar" style="--skill-width: 90%; --skill-color: #f7df1e"></div>
+                    </div>
+                </div>
+                <div class="skill-card glass-card tilt-card" data-skill="react">
+                    <div class="skill-icon-wrap">
+                        <div class="skill-glow" style="--skill-color: #61dafb"></div>
+                        <i class="fab fa-react" style="color: #61dafb"></i>
+                    </div>
+                    <h3>React</h3>
+                    <p>Hooks, Context, Redux, Next.js, component architecture</p>
+                    <div class="skill-level">
+                        <div class="skill-bar" style="--skill-width: 85%; --skill-color: #61dafb"></div>
+                    </div>
+                </div>
+                <div class="skill-card glass-card tilt-card" data-skill="nodejs">
+                    <div class="skill-icon-wrap">
+                        <div class="skill-glow" style="--skill-color: #68a063"></div>
+                        <i class="fab fa-node-js" style="color: #68a063"></i>
+                    </div>
+                    <h3>Node.js</h3>
+                    <p>Express, REST APIs, microservices, real-time apps</p>
+                    <div class="skill-level">
+                        <div class="skill-bar" style="--skill-width: 80%; --skill-color: #68a063"></div>
+                    </div>
+                </div>
+
+                <!-- Spline 3D Viewer centered between the two rows of skill cards -->
+                <div class="skill-spline-wrapper">
+                    <spline-viewer url="https://prod.spline.design/8lDd2L5vmUOlRhKg/scene.splinecode"></spline-viewer>
+                </div>
+
+                <div class="skill-card glass-card tilt-card" data-skill="api">
+                    <div class="skill-icon-wrap">
+                        <div class="skill-glow" style="--skill-color: #a259ff"></div>
+                        <i class="fas fa-plug" style="color: #a259ff"></i>
+                    </div>
+                    <h3>APIs</h3>
+                    <p>RESTful, GraphQL, WebSockets, third-party integrations</p>
+                    <div class="skill-level">
+                        <div class="skill-bar" style="--skill-width: 85%; --skill-color: #a259ff"></div>
+                    </div>
+                </div>
+                <div class="skill-card glass-card tilt-card" data-skill="cloud">
+                    <div class="skill-icon-wrap">
+                        <div class="skill-glow" style="--skill-color: #00d4ff"></div>
+                        <i class="fas fa-cloud" style="color: #00d4ff"></i>
+                    </div>
+                    <h3>Cloud</h3>
+                    <p>AWS, Azure, Docker, CI/CD, serverless architectures</p>
+                    <div class="skill-level">
+                        <div class="skill-bar" style="--skill-width: 75%; --skill-color: #00d4ff"></div>
+                    </div>
+                </div>
+                <div class="skill-card glass-card tilt-card" data-skill="database">
+                    <div class="skill-icon-wrap">
+                        <div class="skill-glow" style="--skill-color: #47a248"></div>
+                        <i class="fas fa-database" style="color: #47a248"></i>
+                    </div>
+                    <h3>Databases</h3>
+                    <p>MongoDB, PostgreSQL, Redis, Supabase, Firebase</p>
+                    <div class="skill-level">
+                        <div class="skill-bar" style="--skill-width: 80%; --skill-color: #47a248"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;experience&gt;</span>
+                <h2 class="section-title">Career Journey</h2>
+                <p class="section-subtitle">My professional timeline</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-line">
+                    <div class="timeline-progress" id="timeline-progress"></div>
+                </div>
+                <div class="timeline-item" data-side="right">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-pulse"></div>
+                    </div>
+                    <div class="timeline-card glass-card tilt-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar"></i> 2025 – Present
+                        </div>
+                        <h3 class="timeline-title">Software Developer</h3>
+                        <h4 class="timeline-company">HCLTech</h4>
+                        <p class="timeline-desc">
+                            Developing enterprise-grade applications and driving digital transformation initiatives.
+                            Working with modern tech stacks to deliver scalable solutions for global clients.
+                        </p>
+                        <div class="timeline-achievements">
+                            <div class="achievement">
+                                <i class="fas fa-trophy"></i>
+                                <span>Led development of key client-facing modules</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-rocket"></i>
+                                <span>Improved application performance by 40%</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-users"></i>
+                                <span>Collaborated with cross-functional global teams</span>
+                            </div>
+                        </div>
+                        <div class="timeline-tags">
+                            <span class="tag">React</span>
+                            <span class="tag">Node.js</span>
+                            <span class="tag">Cloud</span>
+                            <span class="tag">Microservices</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="timeline-item" data-side="left">
+                    <div class="timeline-dot">
+                        <div class="timeline-dot-pulse"></div>
+                    </div>
+                    <div class="timeline-card glass-card tilt-card">
+                        <div class="timeline-date">
+                            <i class="fas fa-calendar"></i> 2024 – 2025
+                        </div>
+                        <h3 class="timeline-title">Software Developer</h3>
+                        <h4 class="timeline-company">MakeMyTrip</h4>
+                        <p class="timeline-desc">
+                            Built high-traffic travel platform features handling millions of daily users.
+                            Developed booking flows, payment integrations, and real-time data systems.
+                        </p>
+                        <div class="timeline-achievements">
+                            <div class="achievement">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Handled 10M+ daily active users</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-bolt"></i>
+                                <span>Optimized booking flow conversion by 25%</span>
+                            </div>
+                            <div class="achievement">
+                                <i class="fas fa-code-branch"></i>
+                                <span>Contributed to core platform architecture</span>
+                            </div>
+                        </div>
+                        <div class="timeline-tags">
+                            <span class="tag">JavaScript</span>
+                            <span class="tag">React</span>
+                            <span class="tag">APIs</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;projects&gt;</span>
+                <h2 class="section-title">Featured Work</h2>
+                <p class="section-subtitle">Selected projects I'm proud of</p>
+            </div>
+            <div class="projects-grid">
+                <div class="project-card glass-card tilt-card">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" title="Live Preview"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>E-Commerce Platform</h3>
+                        <p>Full-stack e-commerce solution with real-time inventory, payment integration, and admin
+                            dashboard.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Node.js</span>
+                            <span>MongoDB</span>
+                            <span>Stripe</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card glass-card tilt-card">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" title="Live Preview"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Analytics Dashboard</h3>
+                        <p>Real-time data visualization dashboard with interactive charts, filters, and export
+                            capabilities.</p>
+                        <div class="project-tech">
+                            <span>Next.js</span>
+                            <span>D3.js</span>
+                            <span>PostgreSQL</span>
+                            <span>WebSocket</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card glass-card tilt-card">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-truck"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" title="Live Preview"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>Logistics Manager</h3>
+                        <p>Smart logistics management system with real-time tracking, route optimization, and fleet
+                            management.</p>
+                        <div class="project-tech">
+                            <span>React</span>
+                            <span>Supabase</span>
+                            <span>Maps API</span>
+                            <span>Real-time</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card glass-card tilt-card">
+                    <div class="project-image">
+                        <div class="project-image-placeholder">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="project-link" title="Live Preview"><i
+                                    class="fas fa-external-link-alt"></i></a>
+                            <a href="#" class="project-link" title="GitHub"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="project-info">
+                        <h3>AI Chat Interface</h3>
+                        <p>Intelligent chatbot platform with NLP processing, context awareness, and multi-language
+                            support.</p>
+                        <div class="project-tech">
+                            <span>TypeScript</span>
+                            <span>OpenAI</span>
+                            <span>Redis</span>
+                            <span>Docker</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Section -->
+    <section id="social" class="section section-compact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;connect&gt;</span>
+                <h2 class="section-title">Let's Connect</h2>
+                <p class="section-subtitle">Find me across the web</p>
+            </div>
+            <div class="social-grid">
+                <a href="https://github.com/" target="_blank" class="social-btn glass-card" data-platform="github">
+                    <div class="social-glow"></div>
+                    <i class="fab fa-github"></i>
+                    <span>GitHub</span>
+                </a>
+                <a href="https://facebook.com/" target="_blank" class="social-btn glass-card" data-platform="facebook">
+                    <div class="social-glow"></div>
+                    <i class="fab fa-facebook-f"></i>
+                    <span>Facebook</span>
+                </a>
+                <a href="https://instagram.com/" target="_blank" class="social-btn glass-card"
+                    data-platform="instagram">
+                    <div class="social-glow"></div>
+                    <i class="fab fa-instagram"></i>
+                    <span>Instagram</span>
+                </a>
+                <a href="https://snapchat.com/" target="_blank" class="social-btn glass-card" data-platform="snapchat">
+                    <div class="social-glow"></div>
+                    <i class="fab fa-snapchat-ghost"></i>
+                    <span>Snapchat</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">&lt;contact&gt;</span>
+                <h2 class="section-title">Get in Touch</h2>
+                <p class="section-subtitle">Have a project in mind? Let's talk</p>
+            </div>
+            <div class="contact-wrapper">
+                <div class="contact-card glass-card tilt-card">
+                    <form id="contact-form" class="contact-form">
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required autocomplete="name">
+                            <label for="name">Your Name</label>
+                            <div class="input-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required autocomplete="email">
+                            <label for="email">Your Email</label>
+                            <div class="input-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                            <div class="input-line"></div>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <label for="message">Your Message</label>
+                            <div class="input-line"></div>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-submit">
+                            <span>Send Message</span>
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+                <div class="contact-info">
+                    <div class="contact-info-card glass-card">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>harshdalal@zoho.in</p>
+                    </div>
+                    <div class="contact-info-card glass-card">
+                        <i class="fas fa-phone"></i>
+                        <h4>Phone</h4>
+                        <p>+91 9817734141</p>
+                    </div>
+                    <div class="contact-info-card glass-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>Location</h4>
+                        <p>Rohtak, Haryana, India</p>
+                    </div>
+                    <div class="contact-info-card glass-card">
+                        <i class="fas fa-briefcase"></i>
+                        <h4>Status</h4>
+                        <p>Open to opportunities</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span class="logo-bracket">&lt;</span>Harsh<span class="logo-bracket">/&gt;</span>
+                </div>
+                <p class="footer-text">Designed & Built with <i class="fas fa-heart"></i> by Harsh Dalal</p>
+                <p class="footer-copyright">&copy; 2026 All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -1298,6 +1298,18 @@ spline-viewer {
     color: #fffc00;
 }
 
+/* Social Spline Viewer Layout Optimization */
+.social-spline-container {
+    height: 350px;
+    margin-bottom: 0px;
+}
+
+@media (max-width: 768px) {
+    .social-spline-container {
+        height: 250px;
+    }
+}
+
 /* Horizontal App Icon Social Grid below Spline Viewer */
 .vertical-social-container {
     display: flex;

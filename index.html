@@ -635,41 +635,49 @@
 
     <script src="script.js"></script>
     <script>
-        // Global Spline Watermark Removal Strategy
-        const cleanSpline = () => {
-            const viewers = document.querySelectorAll('spline-viewer');
-            viewers.forEach(viewer => {
-                if (viewer && viewer.shadowRoot) {
-                    // ID targeting
-                    ['#logo', '#logo-link', '#spline-logo'].forEach(id => {
-                        const el = viewer.shadowRoot.querySelector(id);
-                        if (el) {
-                            el.style.display = 'none';
-                            el.style.opacity = '0';
-                            el.style.visibility = 'hidden';
-                            if (el.parentElement && (el.parentElement.tagName === 'A' || el.tagName === 'A')) {
-                                (el.parentElement.tagName === 'A' ? el.parentElement : el).remove();
-                            } else {
-                                el.remove();
-                            }
-                        }
-                    });
+        // Nuclear Spline Watermark Removal via Shadow DOM CSS Injection
+        const hideSplineWatermark = () => {
+            document.querySelectorAll('spline-viewer').forEach(viewer => {
+                const sr = viewer.shadowRoot;
+                if (!sr) return;
 
-                    // Shadow DOM link targeting (the most absolute source)
-                    const links = viewer.shadowRoot.querySelectorAll('a');
-                    links.forEach(link => {
-                        if (link.href && (link.href.includes('spline.design') || link.id === 'logo' || link.innerText.toLowerCase().includes('spline'))) {
-                            link.style.display = 'none';
-                            link.style.visibility = 'hidden';
-                            link.remove();
+                // 1. CSS injection via adoptedStyleSheets (most persistent method)
+                try {
+                    const sheet = new CSSStyleSheet();
+                    sheet.replaceSync(`
+                        #logo, #logo-link, a[href*="spline.design"],
+                        [id*="logo"], [class*="logo"] {
+                            display: none !important;
+                            opacity: 0 !important;
+                            visibility: hidden !important;
+                            pointer-events: none !important;
                         }
-                    });
-                }
+                    `);
+                    const existingSheets = [...sr.adoptedStyleSheets];
+                    if (!existingSheets.includes(sheet)) {
+                        sr.adoptedStyleSheets = [...existingSheets, sheet];
+                    }
+                } catch (e) { }
+
+                // 2. Direct DOM removal as fallback
+                sr.querySelectorAll('a, #logo, #logo-link').forEach(el => {
+                    if (
+                        el.id === 'logo' ||
+                        el.id === 'logo-link' ||
+                        (el.href && el.href.includes('spline.design')) ||
+                        (el.textContent && el.textContent.toLowerCase().includes('spline'))
+                    ) {
+                        el.style.cssText = 'display:none!important;opacity:0!important;visibility:hidden!important;';
+                        el.remove();
+                    }
+                });
             });
         };
 
-        // Run frequently to catch dynamic renders
-        setInterval(cleanSpline, 30);
+        // Run aggressively every 25ms
+        setInterval(hideSplineWatermark, 25);
+        // Also run immediately when viewers load
+        document.addEventListener('DOMContentLoaded', hideSplineWatermark);
     </script>
 </body>
 

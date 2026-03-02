@@ -1270,6 +1270,115 @@ spline-viewer {
     color: #fffc00;
 }
 
+/* Horizontal App Icon Social Grid below Spline Viewer */
+.vertical-social-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+    margin-top: 20px;
+    padding-bottom: 20px;
+    position: relative;
+    z-index: 10;
+}
+
+.vertical-social-btn {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    text-decoration: none;
+    color: #fff;
+    transition: var(--transition-spring);
+    position: relative;
+    box-shadow:
+        0 8px 20px rgba(0, 0, 0, 0.5),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.4);
+    background: var(--glass);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vertical-social-btn i {
+    font-size: 2rem;
+    transition: var(--transition-spring);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.vertical-social-btn:hover {
+    transform: translateY(-4px) scale(1.05);
+    box-shadow:
+        0 12px 28px rgba(0, 0, 0, 0.6),
+        inset 0 2px 4px rgba(255, 255, 255, 0.4),
+        inset 0 -4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.vertical-social-btn:active {
+    transform: translateY(2px) scale(0.95);
+    box-shadow:
+        0 4px 10px rgba(0, 0, 0, 0.5),
+        inset 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+.vertical-social-btn:hover i {
+    transform: scale(1.1);
+}
+
+/* App Icon Brand Colors & 3D Lighting */
+.vertical-social-btn[data-platform="instagram"] {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+.vertical-social-btn[data-platform="snapchat"] {
+    background: linear-gradient(135deg, #fffc00, #d4d100);
+    color: #000;
+}
+
+.vertical-social-btn[data-platform="snapchat"] i {
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.vertical-social-btn[data-platform="github"] {
+    background: linear-gradient(135deg, #444, #1a1a1a);
+}
+
+.vertical-social-btn[data-platform="facebook"] {
+    background: linear-gradient(135deg, #1877f2, #0d5cbf);
+}
+
+.vertical-social-btn .social-glow {
+    position: absolute;
+    inset: -6px;
+    border-radius: 22px;
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+    z-index: -1;
+}
+
+.vertical-social-btn[data-platform="instagram"] .social-glow {
+    background: radial-gradient(circle at center, rgba(220, 39, 67, 0.5), transparent 70%);
+}
+
+.vertical-social-btn[data-platform="snapchat"] .social-glow {
+    background: radial-gradient(circle at center, rgba(255, 252, 0, 0.4), transparent 70%);
+}
+
+.vertical-social-btn[data-platform="github"] .social-glow {
+    background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2), transparent 70%);
+}
+
+.vertical-social-btn[data-platform="facebook"] .social-glow {
+    background: radial-gradient(circle at center, rgba(24, 119, 242, 0.5), transparent 70%);
+}
+
+.vertical-social-btn:hover .social-glow {
+    opacity: 1;
+}
+
 /* ============================================
    CONTACT SECTION
    ============================================ */

@@ -510,35 +510,42 @@
 
     <!-- Social Section -->
     <section id="social" class="section section-compact">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">&lt;connect&gt;</span>
-                <h2 class="section-title">Let's Connect</h2>
-                <p class="section-subtitle">Find me across the web</p>
-            </div>
-            <div class="social-grid">
-                <a href="https://github.com/" target="_blank" class="social-btn glass-card" data-platform="github">
-                    <div class="social-glow"></div>
-                    <i class="fab fa-github"></i>
-                    <span>GitHub</span>
-                </a>
-                <a href="https://facebook.com/" target="_blank" class="social-btn glass-card" data-platform="facebook">
-                    <div class="social-glow"></div>
-                    <i class="fab fa-facebook-f"></i>
-                    <span>Facebook</span>
-                </a>
-                <a href="https://instagram.com/" target="_blank" class="social-btn glass-card"
-                    data-platform="instagram">
-                    <div class="social-glow"></div>
-                    <i class="fab fa-instagram"></i>
-                    <span>Instagram</span>
-                </a>
-                <a href="https://snapchat.com/" target="_blank" class="social-btn glass-card" data-platform="snapchat">
-                    <div class="social-glow"></div>
-                    <i class="fab fa-snapchat-ghost"></i>
-                    <span>Snapchat</span>
-                </a>
-            </div>
+        <div class="container" style="height: 60vh; min-height: 400px; width: 100%; position: relative;">
+            <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.61/build/spline-viewer.js"></script>
+            <spline-viewer url="https://prod.spline.design/79gp2gQyBTGRB6qB/scene.splinecode"></spline-viewer>
+            <script>
+                setInterval(() => {
+                    const viewer = document.querySelector('#social spline-viewer');
+                    if (viewer && viewer.shadowRoot) {
+                        const logo = viewer.shadowRoot.querySelector('#logo');
+                        if (logo) {
+                            logo.remove();
+                        }
+                    }
+                }, 500);
+            </script>
+        </div>
+        <div class="container vertical-social-container">
+            <a href="https://instagram.com/iharshdalal" target="_blank" class="vertical-social-btn glass-card"
+                data-platform="instagram">
+                <div class="social-glow"></div>
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://snapchat.com/add/harshdalal8" target="_blank" class="vertical-social-btn glass-card"
+                data-platform="snapchat">
+                <div class="social-glow"></div>
+                <i class="fab fa-snapchat-ghost"></i>
+            </a>
+            <a href="https://github.com/Harshdalal22" target="_blank" class="vertical-social-btn glass-card"
+                data-platform="github">
+                <div class="social-glow"></div>
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://facebook.com/" target="_blank" class="vertical-social-btn glass-card"
+                data-platform="facebook">
+                <div class="social-glow"></div>
+                <i class="fab fa-facebook-f"></i>
+            </a>
         </div>
     </section>
 
@@ -599,6 +606,27 @@
                         <i class="fas fa-briefcase"></i>
                         <h4>Status</h4>
                         <p>Open to opportunities</p>
+                    </div>
+                    <div class="contact-info-card glass-card social-links-card"
+                        style="display: flex; flex-direction: row; justify-content: space-around; padding: 20px; align-items: center;">
+                        <a href="https://instagram.com/iharshdalal" target="_blank"
+                            style="color: var(--text-color); font-size: 1.5rem; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--accent-color)'"
+                            onmouseout="this.style.color='var(--text-color)'">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://snapchat.com/add/harshdalal8" target="_blank"
+                            style="color: var(--text-color); font-size: 1.5rem; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--accent-color)'"
+                            onmouseout="this.style.color='var(--text-color)'">
+                            <i class="fab fa-snapchat-ghost"></i>
+                        </a>
+                        <a href="https://github.com/Harshdalal22" target="_blank"
+                            style="color: var(--text-color); font-size: 1.5rem; transition: color 0.3s ease;"
+                            onmouseover="this.style.color='var(--accent-color)'"
+                            onmouseout="this.style.color='var(--text-color)'">
+                            <i class="fab fa-github"></i>
+                        </a>
                     </div>
                 </div>
             </div>

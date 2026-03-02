@@ -230,6 +230,24 @@
         </div>
     </section>
 
+    <!-- Floating Spline Viewer Between Sections -->
+    <div class="floating-spline-container">
+        <script type="module" src="https://unpkg.com/@splinetool/viewer@1.12.61/build/spline-viewer.js"></script>
+        <spline-viewer url="https://prod.spline.design/wgQiakddYw5cKVtO/scene.splinecode"></spline-viewer>
+        <script>
+            // Remove Spline logo from this specifically injected viewer
+            setInterval(() => {
+                const floatingViewer = document.querySelector('.floating-spline-container spline-viewer');
+                if (floatingViewer && floatingViewer.shadowRoot) {
+                    const logo = floatingViewer.shadowRoot.querySelector('#logo');
+                    if (logo) {
+                        logo.remove();
+                    }
+                }
+            }, 500);
+        </script>
+    </div>
+
     <!-- Skills Section -->
     <section id="skills" class="section">
         <div class="container">

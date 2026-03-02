@@ -787,6 +787,34 @@ spline-viewer {
     color: rgba(162, 89, 255, 0.15);
 }
 
+/* Floating Spline Viewer Between Sections */
+.floating-spline-container {
+    width: 100%;
+    height: 350px;
+    position: relative;
+    margin-top: -60px;
+    /* Pulls it up into the blank space below About */
+    margin-bottom: -40px;
+    /* Pulls Skills up closer */
+    z-index: 5;
+    pointer-events: none;
+    /* Let clicks pass through to sections if needed, except for the viewer itself */
+}
+
+.floating-spline-container spline-viewer {
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+}
+
+@media (max-width: 768px) {
+    .floating-spline-container {
+        height: 250px;
+        margin-top: -40px;
+        margin-bottom: -20px;
+    }
+}
+
 /* ============================================
    SKILLS SECTION
    ============================================ */

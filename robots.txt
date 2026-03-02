@@ -1,5 +1,4 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
 Allow: /
 
-Sitemap: https://github.com/Harshdalal22/portfolio/sitemap.xml
+Sitemap: https://harshdalal.xyz/sitemap.xml

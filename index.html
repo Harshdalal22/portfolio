@@ -717,16 +717,40 @@
 
     <script src="script.js"></script>
     <style>
-        /* CSS approach to hide Spline watermarks */
+        /* CSS approach to hide Spline watermarks with black side borders */
         spline-viewer {
-            /* Mask out the bottom right corner exactly where the watermark sits */
-            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 150px) calc(100% - 40px), calc(100% - 150px) 100%, 0 100%) !important;
+            position: relative;
         }
 
-        /* Mobile overrides to clear the watermark space */
+        /* Create black borders on both sides */
+        spline-viewer::before,
+        spline-viewer::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 150px;
+            /* Covers the watermark */
+            background-color: #000000;
+            /* Black border */
+            z-index: 99;
+            pointer-events: none;
+        }
+
+        spline-viewer::before {
+            left: 0;
+        }
+
+        spline-viewer::after {
+            right: 0;
+        }
+
+        /* Mobile overrides to adjust the border width */
         @media (max-width: 768px) {
-            spline-viewer {
-                clip-path: polygon(0 0, 100% 0, 100% calc(100% - 45px), calc(100% - 140px) calc(100% - 45px), calc(100% - 140px) 100%, 0 100%) !important;
+
+            spline-viewer::before,
+            spline-viewer::after {
+                width: 120px;
             }
         }
     </style>

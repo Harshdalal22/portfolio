@@ -588,9 +588,6 @@
 
     <!-- Social Section -->
     <section id="social" class="section section-compact" style="padding-top: 20px; padding-bottom: 20px;">
-        <div class="container social-spline-container" style="width: 100%; position: relative;">
-            <spline-viewer url="https://prod.spline.design/79gp2gQyBTGRB6qB/scene.splinecode"></spline-viewer>
-        </div>
         <div class="container vertical-social-container">
             <a href="https://instagram.com/iharshdalal" target="_blank" class="vertical-social-btn glass-card"
                 data-platform="instagram">
@@ -697,8 +694,13 @@
                 </div>
             </div>
         </div>
-    </section>
 
+        <!-- Social Spline 3D Viewer placed below get in touch -->
+        <div class="container social-spline-container"
+            style="width: 100%; position: relative; margin-top: 2rem; margin-bottom: 2rem;">
+            <spline-viewer url="https://prod.spline.design/79gp2gQyBTGRB6qB/scene.splinecode"></spline-viewer>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -714,49 +716,69 @@
     </footer>
 
     <script src="script.js"></script>
+    <style>
+        /* CSS approach to hide Spline watermarks */
+        spline-viewer {
+            /* Mask out the bottom right corner exactly where the watermark sits */
+            clip-path: polygon(0 0, 100% 0, 100% calc(100% - 40px), calc(100% - 150px) calc(100% - 40px), calc(100% - 150px) 100%, 0 100%) !important;
+        }
+
+        /* Mobile overrides to clear the watermark space */
+        @media (max-width: 768px) {
+            spline-viewer {
+                clip-path: polygon(0 0, 100% 0, 100% calc(100% - 45px), calc(100% - 140px) calc(100% - 45px), calc(100% - 140px) 100%, 0 100%) !important;
+            }
+        }
+    </style>
     <script>
-        // Nuclear Spline Watermark Removal via Shadow DOM CSS Injection
+        // JS Fallback for watermark removal
         const hideSplineWatermark = () => {
             document.querySelectorAll('spline-viewer').forEach(viewer => {
                 const sr = viewer.shadowRoot;
                 if (!sr) return;
 
-                // 1. CSS injection via adoptedStyleSheets (most persistent method)
-                try {
-                    const sheet = new CSSStyleSheet();
-                    sheet.replaceSync(`
-                        #logo, #logo-link, a[href*="spline.design"],
-                        [id*="logo"], [class*="logo"] {
+                // 1. CSS injection via style tag
+                if (!sr.querySelector('#watermark-hider')) {
+                    const style = document.createElement('style');
+                    style.id = 'watermark-hider';
+                    style.textContent = `
+                        #logo, a[href*="spline.design"], #logo-link, [class*="logo"] {
                             display: none !important;
                             opacity: 0 !important;
                             visibility: hidden !important;
                             pointer-events: none !important;
+                            z-index: -9999 !important;
                         }
-                    `);
-                    const existingSheets = [...sr.adoptedStyleSheets];
-                    if (!existingSheets.includes(sheet)) {
-                        sr.adoptedStyleSheets = [...existingSheets, sheet];
-                    }
-                } catch (e) { }
+                    `;
+                    sr.appendChild(style);
+                }
 
-                // 2. Direct DOM removal as fallback
-                sr.querySelectorAll('a, #logo, #logo-link').forEach(el => {
+                // 2. Direct DOM modification
+                const watermarkElements = sr.querySelectorAll('a, #logo, #logo-link');
+                watermarkElements.forEach(el => {
                     if (
                         el.id === 'logo' ||
                         el.id === 'logo-link' ||
                         (el.href && el.href.includes('spline.design')) ||
                         (el.textContent && el.textContent.toLowerCase().includes('spline'))
                     ) {
-                        el.style.cssText = 'display:none!important;opacity:0!important;visibility:hidden!important;';
-                        el.remove();
+                        el.style.setProperty('display', 'none', 'important');
+                        el.style.setProperty('opacity', '0', 'important');
+                        el.style.setProperty('visibility', 'hidden', 'important');
                     }
                 });
             });
         };
 
-        // Run aggressively every 25ms
-        setInterval(hideSplineWatermark, 25);
-        // Also run immediately when viewers load
+        // Run checking multiple times to ensure we catch components as they load
+        let checkCount = 0;
+        const intervalId = setInterval(() => {
+            hideSplineWatermark();
+            checkCount++;
+            // Stop checking after ~10 seconds
+            if (checkCount > 100) clearInterval(intervalId);
+        }, 100);
+
         document.addEventListener('DOMContentLoaded', hideSplineWatermark);
     </script>
 </body>

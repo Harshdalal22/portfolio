@@ -668,8 +668,8 @@ spline-viewer {
 
 .about-avatar {
     position: relative;
-    width: 120px;
-    height: 120px;
+    width: 160px;
+    height: 160px;
     margin: 0 auto 24px;
 }
 
@@ -711,16 +711,18 @@ spline-viewer {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center 10%;
     border-radius: 50%;
     position: relative;
     z-index: 1;
+    display: block;
 }
 
 .avatar-placeholder::after {
     content: '';
     position: absolute;
     inset: 0;
-    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.3));
+    background: transparent;
 }
 
 .avatar-glow {
@@ -1296,6 +1298,28 @@ spline-viewer {
 
 [data-platform="snapchat"]:hover i {
     color: #fffc00;
+}
+
+/* Projects Spline Viewer (Above Featured Work) */
+.projects-spline-container {
+    width: 100%;
+    height: 450px;
+    position: relative;
+    margin-bottom: -30px;
+    z-index: 2;
+    overflow: hidden;
+}
+
+.projects-spline-container spline-viewer {
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 768px) {
+    .projects-spline-container {
+        height: 280px;
+        margin-bottom: -15px;
+    }
 }
 
 /* Social Spline Viewer Layout Optimization */
